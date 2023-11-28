@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from django.views import View
 
 
-def index(request):
+class IndexView(View):
+
     tags = ['Учебный проект', 'фреймворк Django (Python)', 'Статьи']
-    return render(
-        request,
-        'articles/index.html',
-        context={'tags': tags},
-    )
+    template = 'articles/index.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            self.template,
+            context={'tags': self.tags},
+        )
