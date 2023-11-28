@@ -8,4 +8,9 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about.html')
+    topics = ['Hexlet training project', 'Python', 'Django']
+    return render(
+        request,
+        'about.html',
+        context={'topics': topics},
+    )
