@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-django-blog"
-version = "0.2.2"
+version = "0.2.3"
 description = "Hexlet Django-training project | Django developing course"
 authors = ["Evgeny Sokolov <sokolovsolod@gmail.com>"]
 readme = "README.md"
