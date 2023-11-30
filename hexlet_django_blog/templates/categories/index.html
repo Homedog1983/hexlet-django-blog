@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Категории</h1>
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        <div>{{ category.description|slice:":200" }}</div>
+    {% endfor %}
+{% endblock %}

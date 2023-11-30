@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hexlet_django_blog',
     'hexlet_django_blog.article',
+    'hexlet_django_blog.categories'
 ]
 
 MIDDLEWARE = [
