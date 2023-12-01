@@ -20,6 +20,6 @@ class ArticleView(View):
         article = get_object_or_404(Article, id=kwargs['id'])
         return render(
             request,
-            'articles/show.html',
+            'articles/article.html',
             context={'article': article}
         )

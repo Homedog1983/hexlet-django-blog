@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Категории</h1>
+  <div class="container mt-4">
+  <h1>Список категорий статей</h1>
     {% for category in categories %}
-        <h2>{{ category.name }}</h2>
-        <div>{{ category.description|slice:":200" }}</div>
+      <div><a href='{% url 'category_id' category.id %}'>{{ category.name }}</a></div>
+      <div>{{ category.description }}</div>
     {% endfor %}
-{% endblock %}
+  </div>
+{% endblock content %}

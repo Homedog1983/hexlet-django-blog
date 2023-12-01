@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ article.name }}</h1>
+    <div>
+      <a href="{% url 'category_id' article.category.id %}">
+        {{ article.category }}
+      </a>
+    </div>
+    <div>{{ article.body }}</div>
+{% endblock %}
