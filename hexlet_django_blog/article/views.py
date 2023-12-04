@@ -1,6 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from hexlet_django_blog.article.models import Article
+from .forms import ArticleForm
+
+# Идея для развития: приложение .comments - модель: одна статья - много комментов.
+# Связь через foreignKey (id_статьи). Если статья удаляется - все комменты, привязанные
+# к ней - тоже. Вью: гет(статья + индекс комментов+форма коммента заполненная с эррорс),
+# пост: передача с редиректом на гет с новым комментом. Сортировка - последние комменты вверху.
 
 
 class IndexView(View):
@@ -23,3 +29,23 @@ class ArticleView(View):
             'articles/article.html',
             context={'article': article}
         )
+
+
+
+class ArticleFormCreateView(View):
+    __template = 'articles/create.html'
+
+    def get(self, request, *args, **kwargs):
+        form = ArticleForm()
+        return render(request, self.__template, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('articles_index')
+        return render(request, self.__template, {'form': form})
+ 
+
+
+

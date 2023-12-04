@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Список статей</h1>
+    <a href="{% url 'article_create' %}">Создать свою статью</a>
     {% for article in articles %}
         <h2>{{ article.name }}</a></h2>
         <a href="{% url 'article_id' article.id %}">Читать</a>
