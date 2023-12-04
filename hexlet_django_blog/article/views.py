@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from hexlet_django_blog.article.models import Article
 from .forms import ArticleForm
+from django.db.models import Q
 
 # Идея для развития: приложение .comments - модель: одна статья - много комментов.
 # Связь через foreignKey (id_статьи). Если статья удаляется - все комменты, привязанные
@@ -12,12 +13,11 @@ from .forms import ArticleForm
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
-        articles = Article.objects.all()[:15]
-        return render(
-            request, 
-            'articles/index.html',
-            context={'articles': articles}
-        )
+        query = request.GET.get('q', '')
+        articles = Article.objects.filter(Q(name__icontains=query))
+        return render(request, 'articles/index.html', context={
+            'articles': articles, 'search': query
+        })
 
 
 class ArticleView(View):
@@ -29,7 +29,6 @@ class ArticleView(View):
             'articles/article.html',
             context={'article': article}
         )
-
 
 
 class ArticleFormCreateView(View):
@@ -45,7 +44,3 @@ class ArticleFormCreateView(View):
             form.save()
             return redirect('articles_index')
         return render(request, self.__template, {'form': form})
- 
-
-
-
