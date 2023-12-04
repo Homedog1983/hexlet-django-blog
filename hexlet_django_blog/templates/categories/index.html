@@ -3,6 +3,7 @@
 {% block content %}
   <div class="container mt-4">
   <h1>Список категорий статей</h1>
+  <a href="{% url 'category_create' %}">Создать категорию</a>
     {% for category in categories %}
       <div><a href='{% url 'category_id' category.id %}'>{{ category.name }}</a></div>
       <div>{{ category.description }}</div>
