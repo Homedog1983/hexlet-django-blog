@@ -13,6 +13,10 @@ urlpatterns = [
         name='article_create'
     ),
     path(
+        '<int:id>/edit/',
+        views.ArticleFormEditView.as_view(),
+        name='article_update'),
+    path(
         '<int:id>/',
         views.ArticleView.as_view(),
         name='article_id'),
