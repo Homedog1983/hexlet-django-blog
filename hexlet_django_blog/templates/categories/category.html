@@ -14,5 +14,12 @@
     {% endif %}
   <p></p>
   <p><a href="{% url 'category_update' id=category.id %}">Править категорию</a></p>
+  
+  {% if not articles %}
+    <form action="{% url 'category_delete' category.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Удалить">
+    </form>
+  {% endif %}
 </div>
 {% endblock content %}

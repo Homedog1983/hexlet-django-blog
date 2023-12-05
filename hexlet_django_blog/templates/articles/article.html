@@ -10,4 +10,8 @@
     <div>{{ article.body }}</div>
     <p></p>
     <p><a href="{% url 'article_update' id=article.id %}">Править статью</a></p>
+    <form action="{% url 'article_delete' article.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Удалить">
+    </form>
 {% endblock %}

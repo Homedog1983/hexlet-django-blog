@@ -17,6 +17,10 @@ urlpatterns = [
         views.ArticleFormEditView.as_view(),
         name='article_update'),
     path(
+        '<int:id>/delete/',
+        views.ArticleFormDeleteView.as_view(),
+        name='article_delete'),
+    path(
         '<int:id>/',
         views.ArticleView.as_view(),
         name='article_id'),

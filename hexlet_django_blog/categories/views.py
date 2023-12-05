@@ -43,7 +43,7 @@ class CategoryFormCreateView(View):
             form.save()
             return redirect('categories_index')
         return render(request, self.__template, {'form': form})
-    
+
 
 class CategoryFormEditView(View):
 
@@ -69,3 +69,13 @@ class CategoryFormEditView(View):
             'categories/update.html',
             {'form': form, 'category_id': category_id}
         )
+
+
+class CategoryFormDeleteView(View):
+
+    def post(self, request, *args, **kwargs):
+        category_id = kwargs.get('id')
+        category = Category.objects.get(id=category_id)
+        if category:
+            category.delete()
+        return redirect('categories_index')

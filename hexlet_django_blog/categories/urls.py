@@ -18,6 +18,10 @@ urlpatterns = [
         views.CategoryFormEditView.as_view(),
         name='category_update'),
     path(
+        '<int:id>/delete/',
+        views.CategoryFormDeleteView.as_view(),
+        name='category_delete'),
+    path(
         '<int:id>/',
         views.CategoryView.as_view(),
         name='category_id'
