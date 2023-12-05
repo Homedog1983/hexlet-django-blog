@@ -12,5 +12,7 @@
           {% endfor %}
         </ol>
     {% endif %}
+  <p></p>
+  <p><a href="{% url 'category_update' id=category.id %}">Править категорию</a></p>
 </div>
 {% endblock content %}
